@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece Bounties</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">Welcome Monkey.D Garp</h1>
+    </header>
+    <main>
+        <h2 style="text-align: center;">List of Straw Hat Pirates</h2>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p style="text-align: center;">&copy; 2024 One Piece Bounties</p>
+    </footer>
+</body>
+</html>
+
