@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table style="width: 100%; border-collapse: collapse;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid black; padding: 8px;">Pirate Name</th>
+            <th style="border: 1px solid black; padding: 8px;">Special Name</th>
+            <th style="border: 1px solid black; padding: 8px;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pirate in pirates %}
+        <tr>
+            <td style="border: 1px solid black; padding: 8px;">{{ pirate.pirate_name }}</td>
+            <td style="border: 1px solid black; padding: 8px;">{{ pirate.special_name }}</td>
+            <td style="border: 1px solid black; padding: 8px;">
+                <a href="{% url 'pirate_detail' pirate.id %}" style="text-decoration: none; background-color: lightblue; padding: 5px; border-radius: 5px;">View Details</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

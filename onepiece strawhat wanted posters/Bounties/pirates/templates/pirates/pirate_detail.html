@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ pirate.pirate_name }}'s Details{% endblock %}
+
+{% block content %}
+<h2>Details of {{ pirate.pirate_name }}</h2>
+
+<div style="display: flex;">
+    <div style="flex: 1; padding-right: 20px;">
+        <h2 style="font-size: 36px;">{{ pirate.pirate_name }}</h2>
+        <p><strong>Special Name:</strong> {{ pirate.special_name }}</p>
+        <p><strong>Gender:</strong> {{ pirate.gender }}</p>
+        <p><strong>Position in Crew:</strong> {{ pirate.position_in_crew }}</p>
+        <p><strong>First Bounty:</strong> {{ pirate.first_bounty }}</p>
+        <p><strong>Current Bounty:</strong> {{ pirate.current_bounty.amount }} {{ pirate.current_bounty.amount_type }}</p>
+        <p><strong>Age:</strong> {{ pirate.age }}</p>
+        <p><strong>Devil Fruit:</strong> {{ pirate.devil_fruit }}</p>
+        <p><strong>Devil Fruit Name:</strong> {{ pirate.devil_fruit_name }}</p>
+        <p><strong>Haki:</strong> {{ pirate.haki }}</p>
+        <p><strong>Haki Type:</strong> {{ pirate.haki_type }}</p>
+        <p><strong>Powers:</strong> {{ pirate.powers }}</p>
+        <p><strong>Special Power:</strong> {{ pirate.spec_power }}</p>
+        <p><strong>Date of Birth:</strong> {{ pirate.date_of_birth }}</p>
+        <p><strong>Work Done By Them:</strong> {{ pirate.work_done_by_them }}</p>
+        <p><strong>Dream:</strong> {{ pirate.dream }}</p>
+        <a href="{% url 'pirate_list' %}">Back to List of Straw Hat Pirates</a>
+    </div>
+    
+    <div style="flex: 1; text-align: center; margin-top: -50px;">
+        <h2 style="font-size: 24px;">Wanted Poster</h2>
+        <img src="{{ pirate.wanted_poster.url }}" alt="{{ pirate.pirate_name }}'s Wanted Poster" style="max-width: 350px; height: auto;">
+    </div>
+</div>
+{% endblock %}
+
+
