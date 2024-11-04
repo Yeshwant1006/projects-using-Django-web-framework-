@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e0f7fa; /* Light cyan background */
+            color: #00695c; /* Dark teal text */
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-size: 4.5em;
+            color: #00796b; /* Teal for the heading */
+        }
+        table {
+            width: 100%; /* Full width of the page */
+            border-collapse: separate; /* Separate borders for spacing */
+            border-spacing: 0 35px; /* Add vertical spacing between rows */
+            border-radius: 10px;
+            overflow: hidden; /* Rounded corners */
+        }
+        th, td {
+            padding: 20px; /* Increased padding */
+            text-align: left; 
+            background-color: #ffffff; /* White for table cells */
+        }
+        th {
+            background-color: #b2dfdb; /* Light teal for header */
+            color: #ffffff; /* White text for header */
+        }
+        tr:nth-child(even) {
+            background-color: #f1f8e9; /* Very light green for alternate rows */
+        }
+        .product-link {
+            background-color: #00897b; /* Teal button */
+            color: white;
+            font-size: 1em;
+            border-radius: 5px;    
+            padding: 10px 15px; 
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .product-link:hover {
+            background-color: #00796b; /* Darker teal on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Products in Subcategory</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }} Rs</td>
+                    <td>
+                        <a class="product-link" href="{% url 'product_detail' product.id %}">View</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No products found in this subcategory.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

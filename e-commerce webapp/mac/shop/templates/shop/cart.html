@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e0f7fa; /* Light cyan background */
+            color: #2e2e2e; /* Dark grey text */
+        }
+        h2 {
+            margin-top: 30px;
+            color: #00695c; /* Teal color for heading */
+            font-weight: bold;
+        }
+        .table {
+            background-color: #ffffff; /* White table background */
+            border-radius: 8px;
+            overflow: hidden; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        th {
+            background-color: #00796b; /* Dark teal header */
+            color: #ffffff; /* White text */
+        }
+        td {
+            background-color: #f1f8e9; /* Light green for rows */
+        }
+        .btn-primary {
+            background-color: #0288d1; /* Bright blue button */
+            border-color: #0288d1; /* Matching border */
+        }
+        .btn-primary:hover {
+            background-color: #0277bd; /* Darker blue on hover */
+            border-color: #0277bd; /* Darker border */
+        }
+    </style>
+</head>
+<body>
+{% load custom_filters %}
+
+<div class="container mt-5">
+    <h2>Your Cart</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product_id, quantity in cart.items %}
+                {% with product=products|get_item:product_id %}
+                   {% if product %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ quantity }}</td>
+                        <td>{{ product.price }} Rs</td>
+                        <td>{{ product.price|multiply:quantity }} Rs</td>
+                    </tr>
+                   {% else %}
+                     <tr>
+                         <td colspan="4">Product not found.</td>
+                    </tr>
+                   {% endif %}
+                {% endwith %}
+            {% empty %}
+                <tr>
+                    <td colspan="4">Your cart is empty.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h4>Total: {{ total }} Rs</h4>
+    <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
+</div>
+</body>
+</html>

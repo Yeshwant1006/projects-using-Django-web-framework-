@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e8f5e9; /* Light green background */
+            color: #1b5e20; /* Dark green text */
+            font-family: 'Verdana', sans-serif;
+        }
+        .container {
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Deeper shadow for a modern look */
+            padding: 40px;
+            max-width: 500px; /* Limit width for better layout */
+            margin: auto; /* Center the container */
+        }
+        h2 {
+            color: #388e3c; /* Bright green for the heading */
+            margin-bottom: 20px; /* Space below heading */
+        }
+        .form-group label {
+            color: #4a4a4a; /* Soft gray for labels */
+        }
+        .btn {
+            background-color: #ffca28; /* Yellow button */
+            color: #000000; /* Black text */
+            border: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            background-color: #ffb300; /* Darker yellow on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+        h4 {
+            margin-top: 20px; /* Space above total */
+            color: #d32f2f; /* Red color for total */
+            font-weight: bold; /* Bold for emphasis */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Checkout</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="payment">Payment Method</label>
+                <select class="form-control" id="payment" name="payment" required>
+                    <option value="credit_card">Credit Card</option>
+                    <option value="debit_card">Debit Card</option>
+                    <option value="phonepe">PhonePe</option>
+                    <option value="google_pay">Google Pay</option>
+                </select>
+            </div>
+            <h4>Total: {{ total }} Rs</h4>
+            <button type="submit" class="btn">Place Order</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

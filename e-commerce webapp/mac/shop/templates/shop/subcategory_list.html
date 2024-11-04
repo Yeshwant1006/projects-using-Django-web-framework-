@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subcategories</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e1f5fe; /* Light sky blue background */
+            color: #0277bd; /* Dark blue text */
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-size: 4.5em;
+            color: #01579b; /* Deep blue for the heading */
+        }
+        .subcategory-box {
+            border-radius: 15px;
+            margin: 20px;
+            padding: 30px;
+            background-color: #b3e5fc; /* Light blue category box */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 250px; /* Fixed width for boxes */
+            transition: transform 0.3s;
+        }
+        .subcategory-box:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+        .shop-button {
+            background-color: #0288d1; /* Blue button */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .shop-button:hover {
+            background-color: #01579b; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Subcategories</h1>
+    <div>
+        {% for subcategory in subcategories %}
+            <div class="subcategory-box">
+                <h2>{{ subcategory.name }}</h2>
+                <a class="shop-button" href="{% url 'products_by_subcategory' category_id=category_id subcategory_id=subcategory.id %}">Shop</a>
+            </div>
+        {% empty %}
+            <div>No subcategories found.</div>
+        {% endfor %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
