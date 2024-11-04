@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% block content %}
+<body>
+    <h1 class="text-center">Employee details from Database</h1>
+    <hr>
+    <br>
+
+    <table class="table table-bordered">
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.employee_address }}</td>
+            <td><a class="btn btn-primary" role="button" href="{% url 'employee' employee.id %}">click me</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock %}
+</html>

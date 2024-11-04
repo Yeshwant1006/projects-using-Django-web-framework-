@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+</head>
+
+<body>
+    <h3>Employee Name: {{ employee.first_name }} {{ employee.last_name }}</h3>
+    <p>Age: {{ employee.age }}</p>
+    <p>Email Id: {{ employee.email_id }}</p>
+    <p>Phone Number: {{ employee.phone_number }}</p>
+    <p>Gender: {{ employee.employee_gender }}</p>
+    <p>Address: {{ employee.address }}</p> 
+
+    <p>Department: 
+    {% for department in employee.department.all %}
+        <em>{{ department.department_name }}</em>{% if not forloop.last %}, {% endif %}
+    {% empty %}
+        None
+    {% endfor %}
+    </p>
+    
+    <p>Date of Birth: {{ employee.date_of_birth }}</p>
+</body>
+
+</html>
